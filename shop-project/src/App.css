@@ -1,0 +1,430 @@
+/* --- FONTS & VARIABLES --- */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap");
+
+:root {
+  --neon: #ccff00; /* SHOCK GREEN */
+  --black: #000000;
+  --white: #ffffff;
+  --gray: #f0f0f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* --- MARQUEE (MOVING TEXT) --- */
+.marquee-bar {
+  background: var(--neon);
+  color: var(--black);
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.marquee-content span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: var(--white);
+  border-bottom: 3px solid var(--black);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  letter-spacing: -2px;
+}
+.logo span {
+  color: var(--white);
+  -webkit-text-stroke: 1px var(--black);
+}
+
+/* BIG CART BUTTON */
+.nav-cart-btn {
+  background: var(--black);
+  color: var(--neon);
+  border: none;
+  padding: 12px 25px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 5px 5px 0px var(--neon);
+}
+.nav-cart-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px var(--neon);
+}
+
+/* --- HERO --- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 6rem;
+  margin: 0 0 40px 0;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--black);
+}
+
+/* --- FILTERS --- */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--gray);
+  padding: 10px 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--neon);
+}
+
+/* --- GRID & CARDS --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  border: 2px solid var(--gray);
+  background: var(--white);
+  transition: 0.3s;
+}
+.card:hover {
+  border-color: var(--black);
+  box-shadow: 10px 10px 0px var(--black);
+}
+
+.card-image-box {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--gray);
+}
+
+/* --- HOVER EFFECT: COLOR -> B&W --- */
+.card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.5s,
+    filter 0.5s;
+  filter: grayscale(0%); /* STARTS COLOR */
+}
+.card:hover img {
+  transform: scale(1.05);
+  filter: grayscale(100%); /* TURNS B&W ON HOVER */
+}
+
+.card-info {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cat-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #888;
+  text-transform: uppercase;
+}
+.card-info h3 {
+  margin: 5px 0 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  max-width: 180px;
+}
+
+.price {
+  display: block;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.add-btn {
+  width: 45px;
+  height: 45px;
+  background: var(--white);
+  color: var(--black);
+  border: 2px solid var(--black);
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-btn:hover {
+  background: var(--neon);
+  border-color: var(--black);
+}
+
+/* --- CART PAGE --- */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--black);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+.cart-header h1 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 3rem;
+  margin: 0;
+}
+.neon {
+  color: var(--neon);
+  -webkit-text-stroke: 1px var(--black);
+}
+.back-btn {
+  background: none;
+  border: none;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+}
+.cart-row {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--gray);
+  align-items: center;
+}
+.cart-row img {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+  border: 1px solid var(--black);
+}
+
+.row-details h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.unit-price {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.qty-box {
+  display: flex;
+  border: 2px solid var(--black);
+  margin-left: auto;
+}
+.qty-box button {
+  background: var(--white);
+  border: none;
+  width: 35px;
+  cursor: pointer;
+  font-weight: 800;
+}
+.qty-box button:hover {
+  background: var(--neon);
+}
+.qty-num {
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  border-left: 2px solid var(--black);
+  border-right: 2px solid var(--black);
+}
+
+.row-total {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 0 30px;
+  min-width: 60px;
+  text-align: right;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--black);
+}
+.delete-btn:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+.checkout-panel {
+  background: var(--black);
+  color: var(--white);
+  padding: 30px;
+  height: fit-content;
+  box-shadow: 15px 15px 0px var(--neon);
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-family: "Archivo Black", sans-serif;
+  margin-top: 20px;
+}
+.neon-text {
+  color: var(--neon);
+}
+
+.checkout-btn {
+  width: 100%;
+  background: var(--neon);
+  color: var(--black);
+  border: none;
+  padding: 18px;
+  margin-top: 30px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.checkout-btn:hover {
+  background: var(--white);
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 100px 0;
+}
+.empty-cart h2 {
+  font-family: "Archivo Black";
+  font-size: 4rem;
+  opacity: 0.1;
+  margin: 0;
+}
+.shop-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 15px 40px;
+  font-weight: 800;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.shop-btn:hover {
+  background: var(--neon);
+  color: var(--black);
+}
+
+/* --- TOAST --- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: var(--neon);
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 15px 30px;
+  font-weight: 800;
+  box-shadow: 8px 8px 0px var(--black);
+  animation: slideIn 0.3s;
+  z-index: 2000;
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 14vw;
+  }
+  .cart-content {
+    grid-template-columns: 1fr;
+  }
+  .cart-row {
+    flex-wrap: wrap;
+  }
+  .qty-box {
+    margin-left: 0;
+  }
+}
